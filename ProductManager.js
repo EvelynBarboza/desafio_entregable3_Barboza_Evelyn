@@ -81,7 +81,7 @@ class ProductManager {
             const productIndex = products.findIndex((product) => product.id === id);
 
             if (productIndex < 0) {
-                throw new Error(Product 'with ID ${id} does not exist');
+                throw new Error(`Product with ID ${id} does not exist`);
             }
 
             products[productIndex][fieldToUpdate] = newValue;

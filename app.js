@@ -4,13 +4,13 @@ const app = express();
 
 app.use(express.json());
 
-let productos = \[];
+let productos = [];
 
-let carritos = \[];
+let carritos = [];
 
 // 
 
-app.get('/productos', (req, res) \=> {
+app.get('/productos', (req, res) => {
 
 res.json(productos);
 
@@ -18,7 +18,7 @@ res.json(productos);
 
 // 
 
-app.post('/productos', (req, res) \=> {
+app.post('/productos', (req, res) => {
 
 const producto = req.body;
 
@@ -30,9 +30,9 @@ res.status(201).json(producto);
 
 //
 
-app.get('/carritos/:id', (req, res) \=> {
+app.get('/carritos/:id', (req, res) => {
 
-const carrito = carritos.find(c \=> c.id === req.params.id);
+const carrito = carritos.find(c => c.id === req.params.id);
 
 if (!carrito) {
 
@@ -46,9 +46,9 @@ res.json(carrito);
 
 // 
 
-app.post('/carritos', (req, res) \=> {
+app.post('/carritos', (req, res) => {
 
-const carrito = { id: Date.now().toString(), productos: \[\] };
+const carrito = { id: Date.now().toString(), productos: [] };
 
 carritos.push(carrito);
 
@@ -58,9 +58,9 @@ res.status(201).json(carrito);
 
 //
 
-app.post('/carritos/:id/productos', (req, res) \=> {
+app.post('/carritos/:id/productos', (req, res) => {
 
-const carrito = carritos.find(c \=> c.id === req.params.id);
+const carrito = carritos.find(c => c.id === req.params.id);
 
 if (!carrito) {
 
@@ -68,7 +68,7 @@ return res.status(404).json({ error: 'Carrito no encontrado' });
 
 }
 
-const producto = productos.find(p \=> p.id === req.body.id);
+const producto = productos.find(p => p.id === req.body.id);
 
 if (!producto) {
 
@@ -86,4 +86,4 @@ res.json(carrito);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () \=> console.log(\Servidor corriendo en http:/localhost:${port}\));
+app.listen(port, () => console.log("Servidor corriendo en http:/localhost:${port}"));
