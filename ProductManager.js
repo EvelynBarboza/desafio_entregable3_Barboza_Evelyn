@@ -4,12 +4,12 @@ class ProductManager {
     #filePath;
     #lastId = 0;
 
-    constructor(filePath = "./producto.json") {
+    constructor(filePath = "./product.json") {
         this.#filePath = filePath;
         this.#setLastId();
     }
 
-    async addProduct(productName, price, numIdentif,stock = []) {
+    async addProduct(productName, price, numIdentif, stock = []) {
         try {
             if (!productName || !price) {
                 throw new Error("Missing data.");
